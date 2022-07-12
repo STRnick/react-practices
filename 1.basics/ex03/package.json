@@ -1,0 +1,15 @@
+{
+  "name": "ex03",
+  "version": "1.0.0",
+  "description": "ex02: 애플리케이션 분리1: Error",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dev-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.18.1"
+  }
+}
