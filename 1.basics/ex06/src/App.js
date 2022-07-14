@@ -5,7 +5,8 @@ function App() {
     // return App;
     return (
         <div>
-            Hello World!
+            <h1>Hello World!</h1>
+            <h3>babel complete.</h3>
         </div>   
     )
 }
