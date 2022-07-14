@@ -2,9 +2,32 @@ import React from 'react';
 
 const Clock01 = () => {
     const date = new Date();
-    
+
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+
+    if(minutes < 10) {
+        minutes = '0' + minutes;
+    }
+
+    if(seconds < 10) {
+        seconds = '0' + seconds;
+    }
+
+    let session = 'AM';
+    if(hours > 12){
+        session = 'PM';
+    }
+
+    if(hours < 10) {
+        hours = '0' + hours;
+    }
+
     return (
-        <div>현재시각 {date.getHours()}:{date.getMinutes()}:{date.getSeconds()} {date.getHours() < 12 ? 'AM' : 'PM'}</div>
+        <div>
+            현재시각 {hours}:{minutes}:{seconds} {session}
+        </div>
     );
 };
 
