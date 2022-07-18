@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './assets/css/styles.css'
+import './assets/scss/Emaillist.scss';
 
 function emaillist({emails}) {
     return (
-        <ul className={styles.Emaillist}>
+        <ul id={'Emaillist'}>
         {emails.map(email => {
             return (
                 <li key={email.no}>
