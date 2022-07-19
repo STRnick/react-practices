@@ -2,6 +2,8 @@ import React, {Fragment, useRef} from 'react';
 import logo from '../assets/images/react-logo.png';
 
 export default function App() {
+    const imageRef = useRef(null);
+
     const onKeyPressInput = e => {
         if(e.key === 'Enter') {
             console.log(e.target.value);
@@ -12,8 +14,9 @@ export default function App() {
     const onBlurInput = e => console.log('onblur');
     const onMouseOverImage = e => console.log('mouseover', `x=${e.clientX}, y=${e.clientY}`);
     const onMouseMoveImage = e => {
-
-        console.log('mousemove', `x=${e.clientX}, y=${e.clientY}`);
+        const offsetTop = imageRef.current.offsetTop;
+        const offsetLeft = imageRef.current.offsetLeft;
+        console.log('mousemove', `x=${e.clientX-offsetLeft}, y=${e.clientY-offsetTop}`);
     }
 
     const onMouseOutImage = e => console.log('mouseout', `x=${e.clientX}, y=${e.clientY}`);
@@ -34,6 +37,7 @@ export default function App() {
                 <br/>
                 <br/>
             <img
+                ref={imageRef}
                 style={ {
                     cursor: 'pointer',
                     width: 190,
