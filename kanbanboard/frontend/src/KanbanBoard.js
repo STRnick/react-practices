@@ -2,7 +2,7 @@ import React from 'react';
 import cards from './assets/json/data.json';
 import CardList from './CardList';
 
-function KanbanBoard() {
+const KanbanBoard = () => {
     console.log(cards);
 
     return (
