@@ -1,10 +1,9 @@
 import React from 'react';
-import Card from './Card.js';
+import PropTypes from 'prop-types';
+import Card from "./Card";
 import styles from "./assets/css/CardList.css";
 
-const CardList = ({title, cards}) => {
-    console.log(title, ":", cards);
-
+export default function CardList({title, cards}) {
     return (
         <div className={styles.CardList}>
             <h1>{title}</h1>
@@ -15,7 +14,10 @@ const CardList = ({title, cards}) => {
                 description={card.description}
                 status={card.status} />)}
         </div>
-    );
+    )
 }
 
-export default CardList;
+CardList.propTypes = {
+    title: PropTypes.string.isRequired,
+    cards: PropTypes.arrayOf(PropTypes.shape(Card.propTypes))
+}
