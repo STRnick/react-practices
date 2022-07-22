@@ -41,8 +41,6 @@ export default function App() {
                 </button>
             </Modal>
 
-
-
             {/* example modal03: Using shouldCloseOnOverlayClick */}
             <button onClick={ () => setModal03IsOpen(true) }>modal03</button>
             <br/><br/>

@@ -9,7 +9,7 @@ const App = () => {
   const [emails, setEmails] = useState(data);
 
   const notifyEmailDelete = function(no) {
-
+    console.log(no);
   }
 
   const notifyEmailAdd = function(email) {
