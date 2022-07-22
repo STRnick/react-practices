@@ -1,7 +1,7 @@
 import React, {useRef} from 'react'
 import styles from './assets/scss/RegisterForm.scss';
 
-const RegisterForm = () => {
+const RegisterForm = ({callback}) => {
 
   return (
     <form
