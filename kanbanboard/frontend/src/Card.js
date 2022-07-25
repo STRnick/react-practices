@@ -5,20 +5,29 @@ import Task from "./Task";
 import styles from './assets/scss/Card.scss';
 
 export default function Card({no, title, description, status, tasks}) {
-    const [showDetail, setShowDetail] = useState(false);
-    return (
-        <div className={styles.Card}>
-            <div
-                className={[styles.Card__Title, styles.Card__Title__Open].join(" ")}
-                onClick={ e => {}}>
-                {title}
-            </div>
-            <div class='Card__Details'>
-                {description}
-                <TaskList tasks={tasks} />
-            </div>
-        </div>
-    );
+    const {title, description, tasks} = card;
+
+  const [showDetail, setShowDetail] = useState(true);
+
+
+  return (
+    <div className={styles.Card}>
+      <div 
+        className={showDetail ? styles.Card__Title : [styles.Card__Title, styles.Card__Title__open].join(" ")}
+        onClick={() => setShowDetail(prevShowDetail => !prevShowDetail)} >
+        {title}
+      </div>
+      {
+      showDetail ? 
+      null :       
+      <div className={'Card__Details'}>
+        {description}
+        <TaskList tasks={tasks}/>
+      </div>
+      }
+
+    </div>
+  );
 }
 
 Card.propTypes = {
