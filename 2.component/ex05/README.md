@@ -2,7 +2,7 @@
 1.  LifeCycle I: Mount 
    - 01. constructor
    - 02. getDerivedStateFromProps: props로 받아온 값을 state에 동기화 한다. [react v16.3]
-   - 03. render
+   - 03. ***render
    - 04. **componentDidMount: 컴포넌트 생성을 마치고 첫 렌더링 작업이 끝난 후
 
 2.  LifeCycle II: Update 
