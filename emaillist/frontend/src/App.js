@@ -7,44 +7,64 @@ import './assets/scss/App.scss';
 const App = () => {
     const [emails, setEmails] = useState([]);
 
-    const EmailDelete = function (no) {
+    const emailDelete = function (no) {
         console.log(no);
     }
 
-    const EmailAdd = function (email) {
-        console.log(email);
-    }
-
-    const KeywordChanged = function (keyword) {
-      const fetchData = async () => {
+    const emailAdd = async function (email) {
         try {
-          const response = await fetch('/api?kw=${keyword}', {
-            method: 'get',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: null
-          });
+            const response = await fetch(`/api`, {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(email)
+            });
 
-          if (!response.ok) {
-            throw new Error(`${response.status} ${response.statusText}`);
-          }
+            if (!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);
+            }
 
-          const json = await response.json();
+            const json = await response.json();
 
-          if (json.result !== 'success') {
-            throw new Error(`${json.result} ${json.message}`);
-          }
+            if (json.result !== 'success') {
+                throw new Error(`${json.result} ${json.message}`);
+            }
 
-          setEmails(json.data);
+            setEmails([json.data, ...emails]);
         } catch (err) {
-          console.log(err);
+            console.log(err);
         }
-      }
-      fetchData();
-        // setEmails(result);
     }
+
+    const keywordChanged = async function (keyword) {
+        try {
+            const response = await fetch(`/api?kw=${keyword}`, {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: null
+            });
+
+            if (!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);
+            }
+
+            const json = await response.json();
+
+            if (json.result !== 'success') {
+                throw new Error(`${json.result} ${json.message}`);
+            }
+
+            setEmails(json.data);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -80,8 +100,8 @@ const App = () => {
 
     return (
         <div id={'App'}>
-            <RegisterForm callback={EmailAdd}/>
-            <SearchBar callback={KeywordChanged}/>
+            <RegisterForm callback={emailAdd}/>
+            <SearchBar callback={keywordChanged}/>
             <Emaillist emails={emails}/>
         </div>
     )
