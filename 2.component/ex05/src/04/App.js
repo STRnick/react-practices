@@ -19,16 +19,23 @@ export default function App() {
     const [currentTime, setCurrentTime] = useState(getCurrentClockTime());
     const [ticks, setTicks] = useState(0);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentTime(getCurrentClockTime());
-            setTicks(ticks + 1);
-        }, 1000);
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setCurrentTime(getCurrentClockTime());
+    //         setTicks(ticks + 1);
+    //     }, 1000);
+    //
+    //     return (() => {
+    //         clearInterval(interval);
+    //     });
+    // }, []);
 
-        return (() => {
-            clearInterval(interval);
-        });
-    }, []);
+    useEffect(() => {
+        setTimeout(() => {
+            setCurrentTime(getCurrentClockTime());
+            setTicks(ticks+1);
+        }, 1000);
+    }, [currentTime]);
 
     return (
         <div>

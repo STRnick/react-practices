@@ -1,16 +1,16 @@
 const path = require('path');
 
-module.exports = function(env) { 
+module.exports = function (env) {
     return {
         mode: 'development',
         entry: path.resolve(`src/index.js`),
         output: {
-            path: path.resolve('public'),
-            filename: 'main.js',
-            assetModuleFilename:'assets/images/[hash][ext]'
+            path: path.resolve('../backend/src/main/resources'),
+            filename: 'assets/js/main.js',
+            assetModuleFilename: 'assets/images/[hash][ext]'
         },
-        module:{
-            rules:[{
+        module: {
+            rules: [{
                 test: /\.js$/i,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
@@ -22,7 +22,7 @@ module.exports = function(env) {
                 use: [
                     'style-loader',
                     {
-                        loader:'css-loader',
+                        loader: 'css-loader',
                         options: {
                             modules: true
                         }
@@ -37,6 +37,9 @@ module.exports = function(env) {
         devServer: {
             host: '0.0.0.0',
             port: 9090,
+            proxy: {
+                '/api': 'http://localhost:8080'
+            },
             liveReload: true,
             hot: true,
             compress: true
