@@ -7,7 +7,7 @@
 ### src/05: Styling &amp; Semantic Markup
 ### src/06: Composition
 ### src/07: Nesting Routes
-### src/08: BrowserRouter & SSR
+### src/08: useRoute
 
 ### Install Dependency
 1. react-router: 6.0.x(2021.6 beta)

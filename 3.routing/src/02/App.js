@@ -10,7 +10,7 @@ export default function App() {
 
     const handleLinkClick = (e) => {
         e.preventDefault();
-        const url = e.target.href.subString(e.target.href.lastIndexOf('/'));
+        const url = e.target.href.substring(e.target.href.lastIndexOf('/'));
         console.log(url);
 
         window.history.pushState({page: url}, e.target.text, url);
@@ -34,7 +34,7 @@ export default function App() {
     };
 
     return (
-        { router() }
+        {router()}
         <div>
             <ul>
                 <li><a href={'/'} onClick={handleLinkClick}>[Main]</a></li>
