@@ -6,6 +6,7 @@ export default function WriteForm({callback}) {
 
     const handleSubmit = function (e) {
         e.preventDefault();
+
         try {
             const newMessage = Array
                 .from(e.target, (input) => {
@@ -20,7 +21,6 @@ export default function WriteForm({callback}) {
                     res[n] = v;
                     return res;
                 }, {});
-
 
             refForm.current.reset();
             callback(newMessage);
