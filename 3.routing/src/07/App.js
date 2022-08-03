@@ -9,7 +9,6 @@ import Login from "./component/user/Login";
 import Settings from "./component/user/Settings";
 import About from "./component/about";
 import Me from "./component/about/Me";
-
 import Error404 from "./component/error/Error404";
 
 import './assets/scss/App.scss'
